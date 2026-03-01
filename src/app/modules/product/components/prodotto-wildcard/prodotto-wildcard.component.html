@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>I Miei Prodotti</h2>
+
+  <div *ngIf="prodotti.length === 0" class="alert alert-info">
+    Nessun prodotto trovato per questo utente.
+  </div>
+
+  <table class="table" *ngIf="prodotti.length > 0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrizione</th>
+        <th>Prezzo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of prodotti">
+        <td>{{ p.nome }}</td>
+         <td>{{ p.descrizione }}</td>
+        <td>{{ p.prezzo | currency:'EUR' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="btn btn-secondary" (click)="logout()">Logout</button>
