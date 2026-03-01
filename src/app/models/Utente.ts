@@ -1,4 +1,5 @@
 export interface Utente {
     username: string,
-    password: string
+    password: string,
+    ruolo:String
 }

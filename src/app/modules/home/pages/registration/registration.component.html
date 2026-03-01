@@ -1,0 +1,25 @@
+<form #regForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label>Username:</label>
+    <input type="text" name="username" [(ngModel)]="utente.username" required>
+  </div>
+
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" [(ngModel)]="utente.password" required>
+  </div>
+
+  <div>
+    <label>Ruolo:</label>
+    <select name="ruolo" [(ngModel)]="utente.ruolo">
+      <option value="USER">Utente Standard</option>
+      <option value="ADMIN">Amministratore</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!regForm.valid">
+    Registrati
+  </button>
+
+</form>

@@ -8,12 +8,16 @@ import { LoginComponent } from './modules/home/pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ProdottoWildcardComponent } from './modules/product/components/prodotto-wildcard/prodotto-wildcard.component';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { RegistrationComponent } from './modules/home/pages/registration/registration.component';
+import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ProdottoWildcardComponent
+    ProdottoWildcardComponent,
+    RegistrationComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
