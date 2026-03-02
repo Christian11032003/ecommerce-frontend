@@ -1,25 +1,60 @@
-<form #regForm="ngForm" (ngSubmit)="onSubmit()">
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light py-5">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 480px; border-radius: 12px;">
+    
+    <div class="text-center mb-4">
+      <h3 class="fw-bold text-primary">Unisciti a ByteBazaar</h3>
+      <p class="text-muted small">Tutti i campi sono obbligatori</p>
+    </div>
 
-  <div>
-    <label>Username:</label>
-    <input type="text" name="username" [(ngModel)]="utente.username" required>
+    <form #regForm="ngForm" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Nome</label>
+        <input type="text" name="nome" [(ngModel)]="utente.nome" 
+               class="form-control px-3" placeholder="Mario" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Cognome</label>
+        <input type="text" name="cognome" [(ngModel)]="utente.cognome" 
+               class="form-control px-3" placeholder="Rossi" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email</label>
+        <input type="email" name="email" [(ngModel)]="utente.email" 
+               class="form-control px-3" placeholder="mario.rossi@esempio.com" required email>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Username</label>
+        <input type="text" name="username" [(ngModel)]="utente.username" 
+               class="form-control px-3" placeholder="mario_rossi" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Password</label>
+        <input type="password" name="password" [(ngModel)]="utente.password" 
+               class="form-control px-3" placeholder="••••••••" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Ruolo Utente</label>
+        <select name="ruolo" [(ngModel)]="utente.ruolo" class="form-select px-3">
+          <option value="USER">Utente Standard</option>
+          <option value="ADMIN">Amministratore</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="!regForm.valid" 
+              class="btn btn-primary w-100 py-2 shadow-sm fw-bold">
+        Crea Account
+      </button>
+
+      <div class="text-center mt-3">
+        <small class="text-muted">Hai già un account? <a routerLink="/login" class="text-decoration-none fw-bold">Accedi</a></small>
+      </div>
+
+    </form>
   </div>
-
-  <div>
-    <label>Password:</label>
-    <input type="password" name="password" [(ngModel)]="utente.password" required>
-  </div>
-
-  <div>
-    <label>Ruolo:</label>
-    <select name="ruolo" [(ngModel)]="utente.ruolo">
-      <option value="USER">Utente Standard</option>
-      <option value="ADMIN">Amministratore</option>
-    </select>
-  </div>
-
-  <button type="submit" [disabled]="!regForm.valid">
-    Registrati
-  </button>
-
-</form>
+</div>

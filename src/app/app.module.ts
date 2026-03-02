@@ -10,6 +10,7 @@ import { ProdottoWildcardComponent } from './modules/product/components/prodotto
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { RegistrationComponent } from './modules/home/pages/registration/registration.component';
 import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component
     LoginComponent,
     ProdottoWildcardComponent,
     RegistrationComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

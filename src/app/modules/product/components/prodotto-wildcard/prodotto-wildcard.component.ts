@@ -30,10 +30,5 @@ export class ProdottoWildcardComponent implements OnInit {
       }
     });
   }
-  //questo generalmente si mette in una navbar che dopo aggiungeremo
-  logout() {
-  this.authService.logout(); // Pulisce il sessionStorage
-  this.router.navigate(['login']); // Riporta l'utente all'inizio
-}
 
 }

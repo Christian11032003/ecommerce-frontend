@@ -48,8 +48,5 @@ export class AuthService {
     return !!window.sessionStorage.getItem('auth-token'); // Restituisce true se il token esiste, altrimenti false
   }
 
-  // Metodo per il logout
-  public logout(): void {
-    window.sessionStorage.clear();
-  }
+  
 }

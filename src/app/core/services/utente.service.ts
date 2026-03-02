@@ -13,6 +13,6 @@ export class UtenteService {
   constructor(private http: HttpClient) { }
 
   public registration(utente: Utente): Observable<any> {
-    return this.http.post(this.AUTH_API + '/registration', utente);
+    return this.http.post(this.AUTH_API + '/registrazione', utente, { responseType: 'text' });
   }
 }

@@ -1,26 +1,40 @@
-<div class="container">
-  <h2>I Miei Prodotti</h2>
-
-  <div *ngIf="prodotti.length === 0" class="alert alert-info">
-    Nessun prodotto trovato per questo utente.
+<div class="container pb-5">
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-secondary m-0">I Miei Prodotti</h2>
+    <span class="badge bg-secondary rounded-pill">{{ prodotti.length }} Articoli</span>
   </div>
 
-  <table class="table" *ngIf="prodotti.length > 0">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Descrizione</th>
-        <th>Prezzo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of prodotti">
-        <td>{{ p.nome }}</td>
-         <td>{{ p.descrizione }}</td>
-        <td>{{ p.prezzo | currency:'EUR' }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div *ngIf="prodotti.length === 0" class="card border-0 shadow-sm text-center p-5">
+    <div class="mb-3">
+      <span style="font-size: 3rem;">📦</span>
+    </div>
+    <h4 class="text-muted">Ancora nessun prodotto</h4>
+    <p class="text-secondary">Inizia a caricare il tuo inventario hardware e software.</p>
+  </div>
 
-<button class="btn btn-secondary" (click)="logout()">Logout</button>
+  <div class="card shadow-sm border-0 overflow-hidden" *ngIf="prodotti.length > 0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0 align-middle">
+        <thead class="bg-light border-bottom">
+          <tr>
+            <th class="ps-4 py-3 text-uppercase small fw-bold text-muted">Nome</th>
+            <th class="py-3 text-uppercase small fw-bold text-muted">Descrizione</th>
+            <th class="py-3 text-uppercase small fw-bold text-muted text-end pe-4">Prezzo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of prodotti">
+            <td class="ps-4 fw-bold text-primary">{{ p.nome }}</td>
+            <td class="text-muted">{{ p.descrizione }}</td>
+            <td class="text-end pe-4">
+              <span class="badge bg-success-subtle text-success border border-success-subtle p-2">
+                {{ p.prezzo | currency:'EUR' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,9 @@ export class RegistrationComponent {
 
   // Inizializziamo l'oggetto con valori vuoti
   utente = {
+    nome: '',
+    cognome: '',
+    email: '',
     username: '',
     password: '',
     ruolo: 'USER' // Magari impostiamo un default
