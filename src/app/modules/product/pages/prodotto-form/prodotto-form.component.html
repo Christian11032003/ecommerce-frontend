@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light py-5">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 550px; border-radius: 12px;">
+    
+    <div class="text-center mb-4">
+      <h3 class="fw-bold text-success">Nuovo Prodotto</h3>
+      <p class="text-muted small">Inserisci i dettagli del prodotto da mettere in vendita</p>
+    </div>
+
+    <form #prodForm="ngForm" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-3">
+        <label class="form-label fw-semibold text-dark">Nome Prodotto</label>
+        <input type="text" name="nome" [(ngModel)]="prodottoDTO.nome" 
+               class="form-control px-3" placeholder="Es: MacBook Pro 14" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold text-dark">Descrizione</label>
+        <textarea name="descrizione" [(ngModel)]="prodottoDTO.descrizione" 
+                  class="form-control px-3" rows="3" 
+                  placeholder="Descrivi brevemente il prodotto..." required></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold text-dark">Prezzo (€)</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">€</span>
+            <input type="number" name="prezzo" [(ngModel)]="prodottoDTO.prezzo" 
+                   class="form-control ps-1 border-start-0" placeholder="0.00" 
+                   step="0.01" min="0.01" required>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold text-dark">Quantità</label>
+          <input type="number" name="quantita" [(ngModel)]="prodottoDTO.quantita" 
+                 class="form-control px-3" placeholder="1" min="1" required>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" [disabled]="!prodForm.valid" 
+                class="btn btn-success w-100 py-2 shadow-sm fw-bold mb-3">
+          <i class="bi bi-plus-circle me-1"></i> Pubblica Prodotto
+        </button>
+        
+        <button type="button" routerLink="/prodotti" 
+                class="btn btn-outline-secondary w-100 py-2 fw-bold">
+          Annulla e Torna Indietro
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

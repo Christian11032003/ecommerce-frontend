@@ -6,20 +6,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/home/pages/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { ProdottoWildcardComponent } from './modules/product/components/prodotto-wildcard/prodotto-wildcard.component';
+import { ProdottoGridComponent } from './modules/product/pages/prodotto-grid/prodotto-grid.component';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { RegistrationComponent } from './modules/home/pages/registration/registration.component';
 import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
+import { ProdottoComponent } from './modules/product/components/prodotto/prodotto.component';
+import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/prodotto-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ProdottoWildcardComponent,
+    ProdottoGridComponent,
     RegistrationComponent,
     WelcomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProdottoComponent,
+    ProdottoFormComponent
   ],
   imports: [
     BrowserModule,

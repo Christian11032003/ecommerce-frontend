@@ -1,0 +1,28 @@
+<div class="card h-100 shadow-sm border-1">
+  <div class="card-body">
+    <h5 class="card-title fw-bold text-dark mb-2">{{ prodotto.nome }}</h5>
+    
+    <p class="card-text text-secondary mb-3">{{ prodotto.descrizione }}</p>
+    
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <span class="badge bg-light text-dark border">
+        Disponibilità: {{ prodotto.quantita }}
+      </span>
+      
+      <span class="fw-bold text-success fs-5">
+        {{ prodotto.prezzo | currency:'EUR' }}
+      </span>
+    </div>
+  </div>
+
+  <div class="card-footer bg-white border-top-0 d-flex gap-2 pb-3">
+    <a class="btn btn-success btn-sm flex-grow-1 d-flex align-items-center justify-content-center" 
+       [routerLink]="['/prodotti/modifica', prodotto.id]">
+       Modifica
+    </a>
+    
+    <button class="btn btn-outline-danger btn-sm flex-grow-1" (click)="elimina()">
+       Elimina
+    </button>
+  </div>
+</div>
