@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProdottoService } from 'src/app/core/services/prodotto.service';
 import { Prodotto } from 'src/app/models/Prodotto';
 
@@ -12,7 +13,7 @@ export class ProdottoGridComponent implements OnInit {
   // Questa è la sorgente dati che verrà ciclata nell'HTML
   prodotti: Prodotto[] = [];
 
-  constructor(private prodottoService: ProdottoService) {}
+  constructor(private prodottoService: ProdottoService, private router: Router) {}
 
   ngOnInit(): void {
     this.caricaProdotti();
@@ -25,6 +26,9 @@ export class ProdottoGridComponent implements OnInit {
     });
   }
 
+  modificaProdotto(id: number) {
+    this.router.navigate(['/modify-product', id]);
+  }
   // Questa funzione viene chiamata quando il FIGLIO emette l'evento (onElimina)
   gestisciEliminazione(idDaEliminare: number) {
     if (confirm('Vuoi davvero eliminare questo prodotto?')) {

@@ -22,7 +22,7 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe({
       
       next: (data) => {
-
+        
         this.authService.saveUser(data); // Salva i dati usando il servizio
 
         if (this.authService.isLoggedIn()) {
@@ -33,10 +33,20 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        this.errorMessage = 'Credenziali errate o server offline';
-        console.error(err);
+      console.error("Dettagli errore:", err);
+
+      if (typeof err.error === 'string') {
+        // Caso attuale: il server manda una stringa semplice
+        this.errorMessage = err.error;
+      } else if (err.error && err.error.message) {
+        // Caso futuro: il server manda un oggetto JSON { "message": "..." }
+        this.errorMessage = err.error.message;
+      } else {
+        // Caso di emergenza (es. server spento o errore generico)
+        this.errorMessage = "Errore tecnico del server";
       }
+    }
     });
   }
-
 }
+

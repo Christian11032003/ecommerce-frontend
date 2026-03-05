@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProdottoService } from 'src/app/core/services/prodotto.service';
 import { ProdottoDTO } from 'src/app/models/dto/Prodotto-dto';
-import { Prodotto } from 'src/app/models/Prodotto';
 
 @Component({
   selector: 'app-prodotto-form',
@@ -21,6 +20,9 @@ export class ProdottoFormComponent {
     quantita: 1
   };
 
+  errori: any = {}; 
+  messaggioGenerico: string = '';
+
 
   onSubmit() {
     this.prodottoService.addProdotto(this.prodottoDTO).subscribe({
@@ -31,8 +33,27 @@ export class ProdottoFormComponent {
         this.router.navigate(['/prodotti']); 
       },
       error: (err) => {
-        console.error('Errore durante il salvataggio:', err);
-        alert('Si è verificato un errore durante il caricamento del prodotto.');
+         console.error('Errore durante la registrazione', err);
+
+        // 1. Estraiamo il corpo dell'errore (gestendo se è stringa o oggetto)
+        let errorBody = err.error;
+        if (typeof err.error === 'string') {
+          try {
+            errorBody = JSON.parse(err.error);
+          } catch (e) {
+            console.error("Errore nel parsing del JSON", e);
+          }
+        }
+
+        // 2. Gestione Errore 400 (Validazione campi)
+        if (err.status === 400 && errorBody.errors) {
+          this.errori = errorBody.errors;
+        } 
+        
+        // 3. Fallback per altri errori
+        else {
+          this.messaggioGenerico = 'Si è verificato un errore tecnico imprevisto.';
+        }
       }
     });
   }

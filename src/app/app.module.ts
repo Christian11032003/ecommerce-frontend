@@ -13,6 +13,7 @@ import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { ProdottoComponent } from './modules/product/components/prodotto/prodotto.component';
 import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/prodotto-form.component';
+import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/pro
     WelcomeComponent,
     NavbarComponent,
     ProdottoComponent,
-    ProdottoFormComponent
+    ProdottoFormComponent,
+    ProdottoModificaFormComponent
   ],
   imports: [
     BrowserModule,

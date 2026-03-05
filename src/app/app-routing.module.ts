@@ -13,6 +13,7 @@ const routes: Routes = [
   {path:"welcome", component: WelcomeComponent},
   {path:"prodotti",component: ProdottoGridComponent, canActivate: [authGuard]},
   {path: "add-prodotto", component: ProdottoFormComponent, canActivate: [authGuard]},
+  {path: "modify-product/:id", component: ProdottoFormComponent, canActivate: [authGuard]},
   {path: "", redirectTo: "welcome", pathMatch: "full" },
   { path: "**", redirectTo: "welcome" }
 ];

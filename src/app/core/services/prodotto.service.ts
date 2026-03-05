@@ -28,4 +28,8 @@ export class ProdottoService {
   public deleteProdotto(id: number): Observable<any> {
     return this.http.delete(this.AUTH_API + `/deleteProduct/${id}`);
   }
+
+  public getProdottoById(id: number): Observable<any> {
+    return this.http.get<Prodotto>(this.AUTH_API + `/findProductById/${id}`);
+  }
 }

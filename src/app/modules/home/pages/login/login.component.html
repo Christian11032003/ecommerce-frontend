@@ -20,5 +20,15 @@
       Accedi
     </button>
 
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3 small">
+      {{ errorMessage }}
+    </div>
+
+    <div class="text-center mt-3">
+      <p class="small mb-0">Non hai un account? 
+        <a routerLink="/register" class="text-decoration-none fw-bold">Registrati</a>
+      </p>
+    </div>
+
   </div>
 </div>

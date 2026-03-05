@@ -2,8 +2,8 @@
   <div class="card shadow-lg p-4" style="width: 100%; max-width: 550px; border-radius: 12px;">
     
     <div class="text-center mb-4">
-      <h3 class="fw-bold text-success">Nuovo Prodotto</h3>
-      <p class="text-muted small">Inserisci i dettagli del prodotto da mettere in vendita</p>
+      <h3 class="fw-bold text-success">Modifica del prodotto</h3>
+      <p class="text-muted small">Inserisci i dettagli del prodotto da modificare</p>
     </div>
 
     <div *ngIf="messaggioGenerico" class="alert alert-danger p-2 small text-center">
@@ -14,7 +14,7 @@
       
       <div class="mb-3">
         <label class="form-label fw-semibold text-dark">Nome Prodotto</label>
-        <input type="text" name="nome" [(ngModel)]="prodottoDTO.nome" 
+        <input type="text" name="nome" [(ngModel)]="prodotto.nome" 
                class="form-control px-3" [class.is-invalid]="errori.nome"
                placeholder="Es: MacBook Pro 14" required>
         <div *ngIf="errori.nome" class="text-danger small mt-1 ps-1">
@@ -24,7 +24,7 @@
 
       <div class="mb-3">
         <label class="form-label fw-semibold text-dark">Descrizione</label>
-        <textarea name="descrizione" [(ngModel)]="prodottoDTO.descrizione" 
+        <textarea name="descrizione" [(ngModel)]="prodotto.descrizione" 
                   class="form-control px-3" [class.is-invalid]="errori.descrizione"
                   rows="3" placeholder="Descrivi brevemente il prodotto..." required></textarea>
         <div *ngIf="errori.descrizione" class="text-danger small mt-1 ps-1">
@@ -37,7 +37,7 @@
           <label class="form-label fw-semibold text-dark">Prezzo (€)</label>
           <div class="input-group">
             <span class="input-group-text bg-white border-end-0">€</span>
-            <input type="number" name="prezzo" [(ngModel)]="prodottoDTO.prezzo" 
+            <input type="number" name="prezzo" [(ngModel)]="prodotto.prezzo" 
                    class="form-control ps-1 border-start-0" [class.is-invalid]="errori.prezzo"
                    placeholder="0.00" step="0.01" min="0.01" required>
           </div>
@@ -48,7 +48,7 @@
 
         <div class="col-md-6 mb-3">
           <label class="form-label fw-semibold text-dark">Quantità</label>
-          <input type="number" name="quantita" [(ngModel)]="prodottoDTO.quantita" 
+          <input type="number" name="quantita" [(ngModel)]="prodotto.quantita" 
                  class="form-control px-3" [class.is-invalid]="errori.quantita"
                  placeholder="1" min="1" required>
           <div *ngIf="errori.quantita" class="text-danger small mt-1 ps-1">
@@ -60,10 +60,10 @@
       <div class="mt-4">
         <button type="submit" [disabled]="!prodForm.valid" 
                 class="btn btn-success w-100 py-2 shadow-sm fw-bold mb-3">
-          <i class="bi bi-plus-circle me-1"></i> Pubblica Prodotto
+          <i class="bi bi-plus-circle me-1"></i> Modifica Prodotto
         </button>
         
-        <button type="button" routerLink="/prodotti" 
+        <button type="button" [routerLink]="['/prodotti']" 
                 class="btn btn-outline-secondary w-100 py-2 fw-bold">
           Annulla e Torna Indietro
         </button>

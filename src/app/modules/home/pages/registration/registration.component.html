@@ -6,44 +6,54 @@
       <p class="text-muted small">Tutti i campi sono obbligatori</p>
     </div>
 
+    <div *ngIf="messaggioGenerico" class="alert alert-danger shadow-sm border-0 mb-3 small">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ messaggioGenerico }}
+    </div>
+
     <form #regForm="ngForm" (ngSubmit)="onSubmit()">
       
       <div class="mb-3">
         <label class="form-label fw-semibold">Nome</label>
         <input type="text" name="nome" [(ngModel)]="utente.nome" 
-               class="form-control px-3" placeholder="Mario" required>
+               class="form-control px-3" [class.is-invalid]="errori.nome" placeholder="Mario" required>
+        <div class="text-danger small mt-1" *ngIf="errori.nome">{{ errori.nome }}</div>
       </div>
 
       <div class="mb-3">
         <label class="form-label fw-semibold">Cognome</label>
         <input type="text" name="cognome" [(ngModel)]="utente.cognome" 
-               class="form-control px-3" placeholder="Rossi" required>
+               class="form-control px-3" [class.is-invalid]="errori.cognome" placeholder="Rossi" required>
+        <div class="text-danger small mt-1" *ngIf="errori.cognome">{{ errori.cognome }}</div>
       </div>
 
       <div class="mb-3">
         <label class="form-label fw-semibold">Email</label>
         <input type="email" name="email" [(ngModel)]="utente.email" 
-               class="form-control px-3" placeholder="mario.rossi@esempio.com" required email>
+               class="form-control px-3" [class.is-invalid]="errori.email" placeholder="mario.rossi@esempio.com" required email>
+        <div class="text-danger small mt-1" *ngIf="errori.email">{{ errori.email }}</div>
       </div>
 
       <div class="mb-3">
         <label class="form-label fw-semibold">Username</label>
         <input type="text" name="username" [(ngModel)]="utente.username" 
-               class="form-control px-3" placeholder="mario_rossi" required>
+               class="form-control px-3" [class.is-invalid]="errori.username" placeholder="mario_rossi" required>
+        <div class="text-danger small mt-1" *ngIf="errori.username">{{ errori.username }}</div>
       </div>
 
       <div class="mb-3">
         <label class="form-label fw-semibold">Password</label>
         <input type="password" name="password" [(ngModel)]="utente.password" 
-               class="form-control px-3" placeholder="••••••••" required>
+               class="form-control px-3" [class.is-invalid]="errori.password" placeholder="••••••••" required>
+        <div class="text-danger small mt-1" *ngIf="errori.password">{{ errori.password }}</div>
       </div>
 
       <div class="mb-4">
         <label class="form-label fw-semibold">Ruolo Utente</label>
-        <select name="ruolo" [(ngModel)]="utente.ruolo" class="form-select px-3">
+        <select name="ruolo" [(ngModel)]="utente.ruolo" class="form-select px-3" [class.is-invalid]="errori.ruolo">
           <option value="USER">Utente Standard</option>
           <option value="ADMIN">Amministratore</option>
         </select>
+        <div class="text-danger small mt-1" *ngIf="errori.ruolo">{{ errori.ruolo }}</div>
       </div>
 
       <button type="submit" [disabled]="!regForm.valid" 
