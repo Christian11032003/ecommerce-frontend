@@ -1,29 +1,59 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4" *ngIf="!isPublicPage()">
   <div class="container">
     
-    <a class="navbar-brand fw-bold d-flex align-items-center" [routerLink]="'/welcome'">
+    <a class="navbar-brand fw-bold d-flex align-items-center" [routerLink]="['/welcome']">
       <i class="bi bi-cpu-fill me-2 text-white"></i> ByteBazaar
     </a>
 
-    <div class="d-flex align-items-center ms-auto">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
       
-      <a class="btn position-relative me-4 border-0 p-1" [routerLink]="'/carrello'">
-        <i class="bi bi-cart3 fs-4 text-white"></i> <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm" 
-              style="font-size: 0.7rem;">
-          {{ carrelloCount }}
-        </span>
-      </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+        
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center fw-semibold" [routerLink]="['/i-miei-prodotti']" routerLinkActive="active">
+            <i class="bi bi-box-seam me-1"></i> I miei prodotti
+          </a>
+        </li>
 
-      <div class="text-white me-4 d-none d-md-block border-start ps-3">
-        <span class="small d-block text-white-50">Utente collegato</span>
-        <span class="fw-semibold">{{ usernameLogged }}</span>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" [routerLink]="['/prodotti-in-vendita']" routerLinkActive="active">
+            <i class="bi bi-shop me-1"></i> Prodotti in vendita
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" [routerLink]="['/messaggi']" routerLinkActive="active">
+            <i class="bi bi-chat-dots me-1"></i> Messaggi
+          </a>
+        </li>
+
+      </ul>
+
+      <div class="d-flex align-items-center ms-auto">
+        
+        <a class="btn position-relative me-4 border-0 p-1" [routerLink]="['/carrello']">
+          <i class="bi bi-cart3 fs-4 text-white"></i> 
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm" 
+                style="font-size: 0.7rem;">
+            {{ carrelloCount }}
+          </span>
+        </a>
+
+        <div class="text-white me-4 d-none d-md-block border-start ps-3">
+          <span class="small d-block text-white-50 text-end">Utente collegato</span>
+          <span class="fw-semibold">{{ usernameLogged }}</span>
+        </div>
+
+        <button class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold" (click)="logout()">
+          <i class="bi bi-box-arrow-right me-1"></i> 
+          <span class="d-none d-sm-inline">Logout</span>
+        </button>
+
       </div>
-
-      <button class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold" (click)="logout()">
-        <i class="bi bi-box-arrow-right me-1"></i> 
-        <span class="d-none d-sm-inline">Logout</span>
-      </button>
-
     </div>
   </div>
 </nav>

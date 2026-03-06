@@ -18,11 +18,11 @@ export class ProdottoService {
   }
 
   public addProdotto(prodottoDTO: ProdottoDTO): Observable<any> {
-    return this.http.post(this.AUTH_API + `/addProduct`, prodottoDTO);
+    return this.http.post(this.AUTH_API + `/addProduct`,prodottoDTO);
   }
 
   public modifyProdotto(prodotto: Prodotto): Observable<any> {
-    return this.http.put(this.AUTH_API + `/modifyProduct/${prodotto.id}`, prodotto);
+    return this.http.put(this.AUTH_API + `/modifyProduct`, prodotto);
   }
 
   public deleteProdotto(id: number): Observable<any> {
@@ -30,6 +30,6 @@ export class ProdottoService {
   }
 
   public getProdottoById(id: number): Observable<any> {
-    return this.http.get<Prodotto>(this.AUTH_API + `/findProductById/${id}`);
+    return this.http.get<Prodotto>(this.AUTH_API + `/getProductById/${id}`);
   }
 }

@@ -15,6 +15,7 @@ export class ProdottoModificaFormComponent implements OnInit {
 
   prodotto!: Prodotto;
 
+
   ngOnInit(): void 
   {
     this.prodottoService.getProdottoById(this.activatedRoute.snapshot.params['id']).subscribe({
@@ -27,10 +28,12 @@ export class ProdottoModificaFormComponent implements OnInit {
     messaggioGenerico: string = '';
 
     onSubmit(){
+      console.log(this.prodotto)
       this.prodottoService.modifyProdotto(this.prodotto).subscribe({
         next: (res) => {
+          this.prodotto = res
           console.log('Prodotto modificato:', res);
-          alert('Prodotto modificato con successo!');
+          this.router.navigate(["/i-miei-prodotti"]);
         },
         error: (err) => {
            // 1. Estraiamo il corpo dell'errore (gestendo se è stringa o oggetto)

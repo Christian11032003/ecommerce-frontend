@@ -30,7 +30,7 @@ export class ProdottoFormComponent {
         console.log('Prodotto salvato:', res);
         alert('Prodotto aggiunto con successo!');
         // Navighiamo verso la griglia dei prodotti
-        this.router.navigate(['/prodotti']); 
+        this.router.navigate(['/i-miei-prodotti']); 
       },
       error: (err) => {
          console.error('Errore durante la registrazione', err);

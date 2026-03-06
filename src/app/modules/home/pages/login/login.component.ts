@@ -26,7 +26,7 @@ export class LoginComponent {
         this.authService.saveUser(data); // Salva i dati usando il servizio
 
         if (this.authService.isLoggedIn()) {
-          this.router.navigate(['/prodotti']);
+          this.router.navigate(['/i-miei-prodotti']);
         } else {
           // Se arriviamo qui, c'è un problema di sincronizzazione
           console.error('Errore: Token salvato ma isLoggedIn() restituisce false!');

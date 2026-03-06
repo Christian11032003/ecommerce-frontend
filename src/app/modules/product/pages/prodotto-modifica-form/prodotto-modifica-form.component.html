@@ -1,74 +1,87 @@
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light py-5">
   <div class="card shadow-lg p-4" style="width: 100%; max-width: 550px; border-radius: 12px;">
-    
-    <div class="text-center mb-4">
-      <h3 class="fw-bold text-success">Modifica del prodotto</h3>
-      <p class="text-muted small">Inserisci i dettagli del prodotto da modificare</p>
-    </div>
 
-    <div *ngIf="messaggioGenerico" class="alert alert-danger p-2 small text-center">
-      {{ messaggioGenerico }}
-    </div>
-
-    <form #prodForm="ngForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="prodotto; else loading">
       
-      <div class="mb-3">
-        <label class="form-label fw-semibold text-dark">Nome Prodotto</label>
-        <input type="text" name="nome" [(ngModel)]="prodotto.nome" 
-               class="form-control px-3" [class.is-invalid]="errori.nome"
-               placeholder="Es: MacBook Pro 14" required>
-        <div *ngIf="errori.nome" class="text-danger small mt-1 ps-1">
-          {{ errori.nome }}
-        </div>
+      <div class="text-center mb-4">
+        <h3 class="fw-bold text-success">Modifica del prodotto</h3>
+        <p class="text-muted small">ID Prodotto: {{ prodotto.id }}</p>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label fw-semibold text-dark">Descrizione</label>
-        <textarea name="descrizione" [(ngModel)]="prodotto.descrizione" 
-                  class="form-control px-3" [class.is-invalid]="errori.descrizione"
-                  rows="3" placeholder="Descrivi brevemente il prodotto..." required></textarea>
-        <div *ngIf="errori.descrizione" class="text-danger small mt-1 ps-1">
-          {{ errori.descrizione }}
-        </div>
+      <div *ngIf="messaggioGenerico" class="alert alert-danger p-2 small text-center">
+        {{ messaggioGenerico }}
       </div>
 
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label class="form-label fw-semibold text-dark">Prezzo (€)</label>
-          <div class="input-group">
-            <span class="input-group-text bg-white border-end-0">€</span>
-            <input type="number" name="prezzo" [(ngModel)]="prodotto.prezzo" 
-                   class="form-control ps-1 border-start-0" [class.is-invalid]="errori.prezzo"
-                   placeholder="0.00" step="0.01" min="0.01" required>
-          </div>
-          <div *ngIf="errori.prezzo" class="text-danger small mt-1 ps-1">
-            {{ errori.prezzo }}
-          </div>
-        </div>
-
-        <div class="col-md-6 mb-3">
-          <label class="form-label fw-semibold text-dark">Quantità</label>
-          <input type="number" name="quantita" [(ngModel)]="prodotto.quantita" 
-                 class="form-control px-3" [class.is-invalid]="errori.quantita"
-                 placeholder="1" min="1" required>
-          <div *ngIf="errori.quantita" class="text-danger small mt-1 ps-1">
-            {{ errori.quantita }}
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <button type="submit" [disabled]="!prodForm.valid" 
-                class="btn btn-success w-100 py-2 shadow-sm fw-bold mb-3">
-          <i class="bi bi-plus-circle me-1"></i> Modifica Prodotto
-        </button>
+      <form #prodForm="ngForm" (ngSubmit)="onSubmit()">
         
-        <button type="button" [routerLink]="['/prodotti']" 
-                class="btn btn-outline-secondary w-100 py-2 fw-bold">
-          Annulla e Torna Indietro
-        </button>
-      </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-dark">Nome Prodotto</label>
+          <input type="text" name="nome" [(ngModel)]="prodotto.nome" 
+                 class="form-control px-3" [class.is-invalid]="errori.nome"
+                 placeholder="Es: MacBook Pro 14" required>
+          <div *ngIf="errori.nome" class="text-danger small mt-1 ps-1">
+            {{ errori.nome }}
+          </div>
+        </div>
 
-    </form>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-dark">Descrizione</label>
+          <textarea name="descrizione" [(ngModel)]="prodotto.descrizione" 
+                    class="form-control px-3" [class.is-invalid]="errori.descrizione"
+                    rows="3" placeholder="Descrivi brevemente il prodotto..." required></textarea>
+          <div *ngIf="errori.descrizione" class="text-danger small mt-1 ps-1">
+            {{ errori.descrizione }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold text-dark">Prezzo (€)</label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0">€</span>
+              <input type="number" name="prezzo" [(ngModel)]="prodotto.prezzo" 
+                     class="form-control ps-1 border-start-0" [class.is-invalid]="errori.prezzo"
+                     placeholder="0.00" step="0.01" min="0.01" required>
+            </div>
+            <div *ngIf="errori.prezzo" class="text-danger small mt-1 ps-1">
+              {{ errori.prezzo }}
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold text-dark">Quantità</label>
+            <input type="number" name="quantita" [(ngModel)]="prodotto.quantita" 
+                   class="form-control px-3" [class.is-invalid]="errori.quantita"
+                   placeholder="1" min="0" required>
+            <div *ngIf="errori.quantita" class="text-danger small mt-1 ps-1">
+              {{ errori.quantita }}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <button type="submit" [disabled]="!prodForm.valid" 
+                  class="btn btn-success w-100 py-2 shadow-sm fw-bold mb-3">
+            <i class="bi bi-save me-1"></i> Salva Modifiche
+          </button>
+          
+          <button type="button" [routerLink]="['/i-miei-prodotti']" 
+                  class="btn btn-outline-secondary w-100 py-2 fw-bold">
+            Annulla e Torna Indietro
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <ng-template #loading>
+      <div class="text-center py-5">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Caricamento...</span>
+        </div>
+        <p class="mt-3 text-muted">Recupero informazioni prodotto in corso...</p>
+      </div>
+    </ng-template>
+
   </div>
 </div>
