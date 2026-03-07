@@ -17,6 +17,10 @@ export class ProdottoService {
     return this.http.get<Prodotto[]>(this.AUTH_API + `/findAllProductsByUtenteUsername`);
   }
 
+  public getProdottiByUtenteNotUsername(): Observable<any>{
+    return this.http.get<Prodotto[]>(this.AUTH_API + '/findAllProductsByUtenteNotUsername')
+  }
+
   public addProdotto(prodottoDTO: ProdottoDTO): Observable<any> {
     return this.http.post(this.AUTH_API + `/addProduct`,prodottoDTO);
   }

@@ -14,6 +14,8 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { ProdottoComponent } from './modules/product/components/prodotto/prodotto.component';
 import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/prodotto-form.component';
 import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
+import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-venduto-grid/prodotto-venduto-grid.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-
     NavbarComponent,
     ProdottoComponent,
     ProdottoFormComponent,
-    ProdottoModificaFormComponent
+    ProdottoModificaFormComponent,
+    ProdottoVendutoGridComponent
   ],
   imports: [
     BrowserModule,

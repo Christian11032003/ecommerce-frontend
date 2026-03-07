@@ -7,12 +7,14 @@ import { RegistrationComponent } from './modules/home/pages/registration/registr
 import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component';
 import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/prodotto-form.component';
 import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
+import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-venduto-grid/prodotto-venduto-grid.component';
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"registration", component: RegistrationComponent},
   {path:"welcome", component: WelcomeComponent},
   {path:"i-miei-prodotti",component: ProdottoGridComponent, canActivate: [authGuard]},
+  {path:"prodotti-in-vendita", component: ProdottoVendutoGridComponent, canActivate: [authGuard]},
   {path: "add-prodotto", component: ProdottoFormComponent, canActivate: [authGuard]},
   {path: "modify-product/:id", component: ProdottoModificaFormComponent, canActivate: [authGuard]},
   {path: "", redirectTo: "welcome", pathMatch: "full" },

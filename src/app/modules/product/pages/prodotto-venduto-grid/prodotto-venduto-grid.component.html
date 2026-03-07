@@ -1,23 +1,19 @@
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>I Miei Prodotti</h2>
-
-    <a class="btn btn-success" routerLink="/add-prodotto">
-      <i class="bi bi-plus-lg"></i> Aggiungi Nuovo Prodotto
-    </a>
+    <h2>Prodotti in vendita</h2>
   </div>
 
   <hr>
 
   <div class="row">
     <div *ngIf="prodotti.length === 0" class="col-12 text-center">
-      <p class="alert alert-info">Nessun prodotto disponibile.</p>
+      <p class="alert alert-info">Nessun prodotto in vendita.</p>
     </div>
 
     <div class="col-md-4 mb-4" *ngFor="let p of prodotti">
       <app-prodotto 
         [prodotto]="p" 
-        (onElimina)="gestisciEliminazione($event)">
+        (onAggiungiAlCarrello)="aggiungiCarrello($event)">
       </app-prodotto>
     </div>
   </div>
