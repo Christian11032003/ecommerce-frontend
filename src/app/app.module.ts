@@ -15,6 +15,7 @@ import { ProdottoComponent } from './modules/product/components/prodotto/prodott
 import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/prodotto-form.component';
 import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
 import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-venduto-grid/prodotto-venduto-grid.component';
+import { ProdottoVenditaComponent } from './modules/product/components/prodotto-vendita/prodotto-vendita.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-v
     ProdottoComponent,
     ProdottoFormComponent,
     ProdottoModificaFormComponent,
-    ProdottoVendutoGridComponent
+    ProdottoVendutoGridComponent,
+    ProdottoVenditaComponent
   ],
   imports: [
     BrowserModule,

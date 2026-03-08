@@ -7,30 +7,22 @@ import { Prodotto } from 'src/app/models/Prodotto';
   templateUrl: './prodotto.component.html',
   styleUrls: ['./prodotto.component.css']
 })
-export class ProdottoComponent implements OnInit
+export class ProdottoComponent
 {
 
   constructor(authService: AuthService){ }
   
-  ngOnInit(): void {
-
-    
-   
-  }
   // Riceve il dato dal padre
   @Input() prodotto!: Prodotto;
 
   // Notifica al padre quando l'utente clicca su elimina
   @Output() onElimina = new EventEmitter<number>();
 
-  @Output() onAggiungiAlCarrello = new EventEmitter<number>();
 
   elimina() {
     this.onElimina.emit(this.prodotto.id);
   }
 
-  aggiungiAlCarrello(){
-    this.onAggiungiAlCarrello.emit(this.prodotto.id);
-  }
+  
 }
 

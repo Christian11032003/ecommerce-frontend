@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProdottoService } from 'src/app/core/services/prodotto.service';
-import { Prodotto } from 'src/app/models/Prodotto';
+import { ProdottoVendita } from 'src/app/models/dto/Prodotto-vendita';
 
 @Component({
   selector: 'app-prodotto-venduto-grid',
@@ -11,17 +11,15 @@ import { Prodotto } from 'src/app/models/Prodotto';
 export class ProdottoVendutoGridComponent {
 
   // Questa è la sorgente dati che verrà ciclata nell'HTML
-    prodotti: Prodotto[] = [];
+
+
+    prodottiVendita: ProdottoVendita[] = []
   
     constructor(private prodottoService: ProdottoService, private router: Router) {}
   
     ngOnInit(): void {
-      this.caricaProdotti();
-    }
-  
-    caricaProdotti() {
       this.prodottoService.getProdottiByUtenteNotUsername().subscribe({
-        next: (data) => this.prodotti = data,
+        next: (data) => this.prodottiVendita = data,
         error: (err) => console.error('Errore nel caricamento', err)
       });
     }

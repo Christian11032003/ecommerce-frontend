@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProdottoService } from 'src/app/core/services/prodotto.service';
-import { ProdottoDTO } from 'src/app/models/dto/Prodotto-dto';
+import { ProdottoDTO } from 'src/app/models/dto/Prodotto-personale';
 
 @Component({
   selector: 'app-prodotto-form',
@@ -17,7 +17,8 @@ export class ProdottoFormComponent {
     nome: '',
     descrizione: '',
     prezzo: 0,
-    quantita: 1
+    quantita: 1,
+    
   };
 
   errori: any = {}; 

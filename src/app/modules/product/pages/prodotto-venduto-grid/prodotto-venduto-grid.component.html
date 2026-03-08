@@ -6,15 +6,15 @@
   <hr>
 
   <div class="row">
-    <div *ngIf="prodotti.length === 0" class="col-12 text-center">
+    <div *ngIf="prodottiVendita.length === 0" class="col-12 text-center">
       <p class="alert alert-info">Nessun prodotto in vendita.</p>
     </div>
 
-    <div class="col-md-4 mb-4" *ngFor="let p of prodotti">
-      <app-prodotto 
-        [prodotto]="p" 
+    <div class="col-md-4 mb-4" *ngFor="let p of prodottiVendita">
+      <app-prodotto-vendita
+        [prodottoVendita]="p" 
         (onAggiungiAlCarrello)="aggiungiCarrello($event)">
-      </app-prodotto>
+      </app-prodotto-vendita>
     </div>
   </div>
 </div>

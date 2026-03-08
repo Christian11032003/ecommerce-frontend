@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProdottoDTO } from 'src/app/models/dto/Prodotto-dto';
+import { ProdottoPersonale } from 'src/app/models/dto/Prodotto-personale';
 import { Prodotto } from 'src/app/models/Prodotto';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Prodotto } from 'src/app/models/Prodotto';
 })
 export class ProdottoService {
 
-  private AUTH_API = 'http://localhost:5051/api/prodotti';
+  private AUTH_API = 'http://localhost:5051/api/prodotto';
 
   constructor(private http: HttpClient) { }
 
@@ -21,8 +21,8 @@ export class ProdottoService {
     return this.http.get<Prodotto[]>(this.AUTH_API + '/findAllProductsByUtenteNotUsername')
   }
 
-  public addProdotto(prodottoDTO: ProdottoDTO): Observable<any> {
-    return this.http.post(this.AUTH_API + `/addProduct`,prodottoDTO);
+  public addProdotto(prodottoPersonale: ProdottoPersonale): Observable<any> {
+    return this.http.post(this.AUTH_API + `/addProduct`,prodottoPersonale);
   }
 
   public modifyProdotto(prodotto: Prodotto): Observable<any> {
@@ -30,7 +30,7 @@ export class ProdottoService {
   }
 
   public deleteProdotto(id: number): Observable<any> {
-    return this.http.delete(this.AUTH_API + `/deleteProduct/${id}`);
+    return this.http.delete(this.AUTH_API +`/deleteProduct/${id}`);
   }
 
   public getProdottoById(id: number): Observable<any> {
