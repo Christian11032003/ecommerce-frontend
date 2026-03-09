@@ -8,12 +8,13 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+
+  constructor(private authService: AuthService, private router: Router) {}
   
   usernameLogged: string = '';     
   
   carrelloCount: number = 0;
 
-  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {

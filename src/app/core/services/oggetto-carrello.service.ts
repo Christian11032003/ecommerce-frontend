@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProdottoVendita } from 'src/app/models/dto/Prodotto-vendita';
 import { AggiungiCarrello } from 'src/app/models/dto/request/Aggiungi-Carrello';
 
 @Injectable({
@@ -12,8 +13,8 @@ export class OggettoCarrelloService {
 
   constructor(private http: HttpClient) { }
 
-  public addToCart(aggiungiCarrello: AggiungiCarrello): Observable<any> {
-      return this.http.post(this.AUTH_API + `/findAllProductsByUtenteUsername`, aggiungiCarrello);
+  public addToCart(request: AggiungiCarrello): Observable<any> {
+      return this.http.post(this.AUTH_API + `/addToCart`, request);
   }
 
 

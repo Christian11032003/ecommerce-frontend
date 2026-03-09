@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProdottoService } from 'src/app/core/services/prodotto.service';
-import { ProdottoDTO } from 'src/app/models/dto/Prodotto-personale';
+import { ProdottoPersonale } from 'src/app/models/dto/Prodotto-personale';
 
 @Component({
   selector: 'app-prodotto-form',
@@ -13,7 +13,7 @@ export class ProdottoFormComponent {
   constructor(private prodottoService: ProdottoService, private router: Router) {}
 
   // Creiamo un oggetto prodotto vuoto coerente con il modello
-  prodottoDTO: ProdottoDTO = {
+  prodottoPersonale: ProdottoPersonale = {
     nome: '',
     descrizione: '',
     prezzo: 0,
@@ -26,7 +26,7 @@ export class ProdottoFormComponent {
 
 
   onSubmit() {
-    this.prodottoService.addProdotto(this.prodottoDTO).subscribe({
+    this.prodottoService.addProdotto(this.prodottoPersonale).subscribe({
       next: (res) => {
         console.log('Prodotto salvato:', res);
         alert('Prodotto aggiunto con successo!');
