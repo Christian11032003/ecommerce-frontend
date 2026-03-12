@@ -8,11 +8,13 @@ import { WelcomeComponent } from './modules/home/pages/welcome/welcome.component
 import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/prodotto-form.component';
 import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
 import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-venduto-grid/prodotto-venduto-grid.component';
+import { CarrelloComponent } from './modules/cart/pages/carrello/carrello.component';
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"registration", component: RegistrationComponent},
   {path:"welcome", component: WelcomeComponent},
+  {path: "mio-carrello", component: CarrelloComponent, canActivate: [authGuard]},
   {path:"i-miei-prodotti",component: ProdottoGridComponent, canActivate: [authGuard]},
   {path:"prodotti-in-vendita", component: ProdottoVendutoGridComponent, canActivate: [authGuard]},
   {path: "add-prodotto", component: ProdottoFormComponent, canActivate: [authGuard]},

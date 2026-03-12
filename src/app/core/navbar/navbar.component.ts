@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { BehaviorSubject } from 'rxjs';
+import { OggettoCarrelloService } from '../services/oggetto-carrello.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,12 +11,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit{
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService,private oggettoCarrelloService: OggettoCarrelloService ,private router: Router) {}
   
-  usernameLogged: string = '';     
+  usernameLogged: string = '';
   
   carrelloCount: number = 0;
-
+  
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
@@ -22,6 +24,10 @@ export class NavbarComponent implements OnInit{
       const user = this.authService.getUser();
       console.log(user);
       this.usernameLogged = user.username;
+
+      this.oggettoCarrelloService.carrelloCount$.subscribe(count => {
+      this.carrelloCount = count; 
+      });
       // Qui potresti anche chiamare un servizio per ottenere il numero di prodotti nel carrello
     }
   }

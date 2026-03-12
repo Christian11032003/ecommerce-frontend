@@ -16,6 +16,8 @@ import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/pro
 import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
 import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-venduto-grid/prodotto-venduto-grid.component';
 import { ProdottoVenditaComponent } from './modules/product/components/prodotto-vendita/prodotto-vendita.component';
+import { CarrelloComponent } from './modules/cart/pages/carrello/carrello.component';
+import { OggettoCarrelloComponent } from './modules/cart/components/oggetto-carrello/oggetto-carrello.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ProdottoVenditaComponent } from './modules/product/components/prodotto-
     ProdottoFormComponent,
     ProdottoModificaFormComponent,
     ProdottoVendutoGridComponent,
-    ProdottoVenditaComponent
+    ProdottoVenditaComponent,
+    CarrelloComponent,
+    OggettoCarrelloComponent
   ],
   imports: [
     BrowserModule,
