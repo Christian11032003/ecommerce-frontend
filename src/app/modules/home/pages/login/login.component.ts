@@ -22,8 +22,9 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe({
       
       next: (data) => {
-        
         this.authService.saveUser(data); // Salva i dati usando il servizio
+
+        this.authService.updateUserStatus();
 
         if (this.authService.isLoggedIn()) {
           this.router.navigate(['/i-miei-prodotti']);

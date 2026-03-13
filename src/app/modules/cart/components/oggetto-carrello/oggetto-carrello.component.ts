@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { OggettoCarrelloService } from 'src/app/core/services/oggetto-carrello.service';
+import { ModificaCarrello } from 'src/app/models/dto/request/Modifica-Carrello';
 
 @Component({
   selector: 'app-oggetto-carrello',
@@ -14,6 +15,8 @@ export class OggettoCarrelloComponent{
   // Creiamo l'evento in uscita
   @Output() onElimina = new EventEmitter<number>();
 
+  @Output() onModifica = new EventEmitter<ModificaCarrello>();
+
   get prodotto() {
     return this.dati.prodotto;
   }
@@ -22,6 +25,7 @@ export class OggettoCarrelloComponent{
     // Emettiamo l'ID del prodotto (o dell'oggetto carrello) verso il padre
     this.onElimina.emit(this.dati.id); 
   }
+
 
 
 

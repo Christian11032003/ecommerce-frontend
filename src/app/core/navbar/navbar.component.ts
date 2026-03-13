@@ -11,25 +11,27 @@ import { OggettoCarrelloService } from '../services/oggetto-carrello.service';
 })
 export class NavbarComponent implements OnInit{
 
-  constructor(private authService: AuthService,private oggettoCarrelloService: OggettoCarrelloService ,private router: Router) {}
+  constructor(private authService: AuthService, private oggettoCarrelloService: OggettoCarrelloService ,private router: Router) {}
   
   usernameLogged: string = '';
   
   carrelloCount: number = 0;
+
+  isLoading: boolean = true
   
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn()) {
-
-      const user = this.authService.getUser();
-      console.log(user);
+  // Ci iscriviamo ai cambiamenti dell'utente
+  this.authService.user$.subscribe(user => {
+    if (user) {
       this.usernameLogged = user.username;
-
-      this.oggettoCarrelloService.carrelloCount$.subscribe(count => {
-      this.carrelloCount = count; 
-      });
-      // Qui potresti anche chiamare un servizio per ottenere il numero di prodotti nel carrello
+      this.isLoading = false;
+      this.caricaConteggioIniziale();
+    } else {
+      this.usernameLogged = '';
+      this.carrelloCount = 0;
     }
+  });
   }
 
   // Controlla se nascondere la navbar
@@ -39,8 +41,18 @@ export class NavbarComponent implements OnInit{
   }
 
   logout(): void {
-    window.sessionStorage.clear();
-    this.router.navigate(['/login']);
+    this.authService.logout(); // Pulisce i dati nel servizio
+    this.router.navigate(['/login']); // Naviga dolcemente senza reload()
+  }
+
+  private caricaConteggioIniziale() {
+  this.oggettoCarrelloService.countProductInCart().subscribe({
+    next: (data) => {
+      // Notifichiamo il conteggio basandoci sulla lunghezza dell'array ricevuto
+      this.oggettoCarrelloService.updateCount(data.length);
+    },
+    error: (err) => console.error("Errore nel recupero conteggio carrello", err)
+  });
   }
 
 }

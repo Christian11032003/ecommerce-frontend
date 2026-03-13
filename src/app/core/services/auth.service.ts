@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private userSubject = new BehaviorSubject<any>(this.getUser());
+  user$ = this.userSubject.asObservable();
 
   private AUTH_API = 'http://localhost:5051/api/auth/';
 
@@ -30,6 +33,9 @@ export class AuthService {
 
     // 2. Salviamo l'intero oggetto (id, username, role) per la UI
     window.sessionStorage.setItem('auth-user', JSON.stringify(user));
+
+
+     this.updateUserStatus();
   }
 
   // Recupera il token per l'Interceptor
@@ -43,9 +49,18 @@ export class AuthService {
     return user ? JSON.parse(user) : null;
   }
 
+  updateUserStatus() {
+    this.userSubject.next(this.getUser());
+  }
+
   // Controlla se l'utente è loggato
   public isLoggedIn(): boolean {
     return !!window.sessionStorage.getItem('auth-token'); // Restituisce true se il token esiste, altrimenti false
+  }
+
+  public logout() {
+    window.sessionStorage.clear();
+    this.userSubject.next(null); // Notifica a tutti che l'utente è null
   }
 
   

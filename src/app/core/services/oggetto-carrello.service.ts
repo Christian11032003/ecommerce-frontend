@@ -37,6 +37,10 @@ export class OggettoCarrelloService {
     return this.http.delete(this.AUTH_API + `/deleteFromKart/${id}`)
   }
 
+  public countProductInCart(): Observable<any>{
+    return this.http.get<OggettoCarrello[]>(this.AUTH_API + '/countIntoKart');
+  }
+
   
 
 
