@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarrelloService } from 'src/app/core/services/carrello.service';
 import { OggettoCarrelloService } from 'src/app/core/services/oggetto-carrello.service';
 import { ModificaCarrello } from 'src/app/models/dto/request/Modifica-Carrello';
 
@@ -8,12 +10,13 @@ import { ModificaCarrello } from 'src/app/models/dto/request/Modifica-Carrello';
   styleUrls: ['./carrello.component.css']
 })
 export class CarrelloComponent implements OnInit {
+  
   listaCarrello: any[] = [];
   
   // 1. Aggiungi la variabile di stato
   isLoading: boolean = false;
 
-  constructor(private oggettoCarrelloService: OggettoCarrelloService) {}
+  constructor(private oggettoCarrelloService: OggettoCarrelloService, private carrelloService: CarrelloService, private router: Router) {}
 
   ngOnInit(): void {
     this.caricaCarrello();
@@ -49,4 +52,25 @@ export class CarrelloComponent implements OnInit {
       }
     });
   }
+
+  confermaCarrello(){
+    this.carrelloService.confermKart().subscribe({
+      next : () => {
+      alert('Acquisto completato con successo!');
+
+      // 2. Svuota la lista locale così spariscono i prodotti dalla vista
+      this.listaCarrello = [];
+
+      // 3. Azzera il contatore della navbar tramite il service
+      this.oggettoCarrelloService.updateCount(0);
+
+      this.router.navigate(['/prodotti-in-vendita'])
+      },
+      error : (err) => {
+        alert("Carrello non confermato con successo")
+      }
+
+    })
+  }
+
 }

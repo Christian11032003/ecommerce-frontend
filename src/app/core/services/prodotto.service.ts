@@ -21,6 +21,10 @@ export class ProdottoService {
     return this.http.get<Prodotto[]>(this.AUTH_API + '/findAllProductsByUtenteNotUsername')
   }
 
+  public getProdottiAlreadyTaken(): Observable<any>{
+    return this.http.get<Prodotto []>(this.AUTH_API + '/findAllProductsAlreadyTaken')
+  }
+
   public addProdotto(prodottoPersonale: ProdottoPersonale): Observable<any> {
     return this.http.post(this.AUTH_API + `/addProduct`,prodottoPersonale);
   }

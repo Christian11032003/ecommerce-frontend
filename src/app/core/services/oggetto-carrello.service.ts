@@ -41,7 +41,9 @@ export class OggettoCarrelloService {
     return this.http.get<OggettoCarrello[]>(this.AUTH_API + '/countIntoKart');
   }
 
-  
+  public showProductAlreadyBuy() :Observable<any>{
+    return this.http.get<OggettoCarrello[]>(this.AUTH_API + '/showProductInCartTaken')
+  }
 
 
 

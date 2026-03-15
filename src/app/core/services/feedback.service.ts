@@ -5,13 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CarrelloService {
+export class FeedbackService {
 
-  private AUTH_API = 'http://localhost:5051/api/carrello';
+  private AUTH_API = 'http://localhost:5051/api/feedback';
 
   constructor(private http: HttpClient) { }
-
-  public confermKart(): Observable<any> {
-        return this.http.get(this.AUTH_API + `/confermKart`);
-  }
 }

@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>I Miei Acquisti</h2>
+    <p class="text-muted small">Prodotti acquistati pronti per essere recensiti</p>
+  </div>
+
+  <hr>
+
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <div class="row" *ngIf="!isLoading">
+    <div *ngIf="listProdottiAcquistati.length === 0" class="col-12 text-center py-5">
+      <p class="alert alert-info">Non hai ancora acquistato prodotti da recensire.</p>
+    </div>
+
+    <div class="col-md-4 mb-4" *ngFor="let p of listProdottiAcquistati">
+      <app-prodotto [prodotto]="p"></app-prodotto>
+    </div>
+  </div>
+</div>
