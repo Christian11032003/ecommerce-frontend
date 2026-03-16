@@ -39,5 +39,10 @@
             (click)="aggiungiAlCarrello()">
       <i class="bi bi-cart-plus"></i> Aggiungi
     </button>
+
+    <button class="btn btn-warning btn-sm flex-grow-1 text-dark" 
+              [routerLink]="['/feedback-of-product', prodottoVendita.id]">
+        <i class="bi bi-chat-left-text"></i> Mostra feedback
+    </button>
   </div>
 </div>

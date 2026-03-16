@@ -6,7 +6,7 @@ import { ProdottoService } from 'src/app/core/services/prodotto.service';
   templateUrl: './prodotto-comprato-grid.component.html',
   styleUrls: ['./prodotto-comprato-grid.component.css']
 })
-export class ProdottoCompratoComponent {
+export class ProdottoCompratoComponentGrid {
 
   listProdottiAcquistati: any[] = []; // Meglio usare un'interfaccia Prodotto[]
   isLoading: boolean = true;

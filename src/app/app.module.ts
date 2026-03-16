@@ -19,7 +19,10 @@ import { ProdottoVenditaComponent } from './modules/product/components/prodotto-
 import { CarrelloComponent } from './modules/cart/pages/carrello/carrello.component';
 import { OggettoCarrelloComponent } from './modules/cart/components/oggetto-carrello/oggetto-carrello.component';
 import { FeedbackFormComponent } from './modules/feedback/pages/feedback-form/feedback-form.component';
-import { ProdottoCompratoComponent } from './modules/product/pages/prodotto-comprato/prodotto-comprato-grid.component';
+import { ProdottoCompratoComponent } from './modules/product/components/prodotto-comprato/prodotto-comprato.component';
+import { ProdottoCompratoComponentGrid } from './modules/product/pages/prodotto-comprato-grid/prodotto-comprato-grid.component';
+import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of-product/feedback-of-product.component';
+
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { ProdottoCompratoComponent } from './modules/product/pages/prodotto-comp
     CarrelloComponent,
     OggettoCarrelloComponent,
     FeedbackFormComponent,
-    ProdottoCompratoComponent
+    ProdottoCompratoComponent,
+    ProdottoCompratoComponentGrid,
+    FeedbackOfProductComponent
     
   ],
   imports: [

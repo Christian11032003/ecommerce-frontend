@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { FeedbackService } from 'src/app/core/services/feedback.service';
 import { ProdottoVendita } from 'src/app/models/dto/Prodotto-vendita';
 import { AggiungiCarrello } from 'src/app/models/dto/request/Aggiungi-Carrello';
 
@@ -17,6 +19,8 @@ export class ProdottoVenditaComponent {
 
   @Output() onAggiungiAlCarrello = new EventEmitter<AggiungiCarrello>();
 
+  constructor(private router: Router){}
+
   aggiungiAlCarrello(){
   
     // Verifichiamo che la quantità sia valida prima di inviare
@@ -29,5 +33,6 @@ export class ProdottoVenditaComponent {
       console.warn("Seleziona almeno una unità");
     }
   }
+
 
 }

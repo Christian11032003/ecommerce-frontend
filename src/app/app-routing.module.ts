@@ -9,7 +9,9 @@ import { ProdottoFormComponent } from './modules/product/pages/prodotto-form/pro
 import { ProdottoModificaFormComponent } from './modules/product/pages/prodotto-modifica-form/prodotto-modifica-form.component';
 import { ProdottoVendutoGridComponent } from './modules/product/pages/prodotto-venduto-grid/prodotto-venduto-grid.component';
 import { CarrelloComponent } from './modules/cart/pages/carrello/carrello.component';
-import { ProdottoCompratoComponent } from './modules/product/pages/prodotto-comprato/prodotto-comprato-grid.component';
+import { FeedbackFormComponent } from './modules/feedback/pages/feedback-form/feedback-form.component';
+import { ProdottoCompratoComponentGrid } from './modules/product/pages/prodotto-comprato-grid/prodotto-comprato-grid.component';
+import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of-product/feedback-of-product.component';
 const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "registration", component: RegistrationComponent},
@@ -17,9 +19,11 @@ const routes: Routes = [
   {path: "mio-carrello", component: CarrelloComponent, canActivate: [authGuard]},
   {path: "i-miei-prodotti",component: ProdottoGridComponent, canActivate: [authGuard]},
   {path: "prodotti-in-vendita", component: ProdottoVendutoGridComponent, canActivate: [authGuard]},
-  {path: "prodotti-acquistati", component: ProdottoCompratoComponent, canActivate:[authGuard]},
+  {path: "prodotti-acquistati", component: ProdottoCompratoComponentGrid, canActivate:[authGuard]},
   {path: "add-prodotto", component: ProdottoFormComponent, canActivate: [authGuard]},
+  {path: "add-feedback/:id", component: FeedbackFormComponent, canActivate: [authGuard]},
   {path: "modify-product/:id", component: ProdottoModificaFormComponent, canActivate: [authGuard]},
+  {path: "feedback-of-product/:id", component: FeedbackOfProductComponent, canActivate: [authGuard]},
   {path: "", redirectTo: "welcome", pathMatch: "full" },
   {path: "**", redirectTo: "welcome" }
 ];
