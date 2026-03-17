@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FeedbackService } from 'src/app/core/services/feedback.service';
+import { Feedback } from 'src/app/models/dto/response/Feedback';
 
 @Component({
   selector: 'app-feedback-of-product',
@@ -9,7 +10,7 @@ import { FeedbackService } from 'src/app/core/services/feedback.service';
 })
 export class FeedbackOfProductComponent implements OnInit {
 
-  feedbacks: any[] = [];
+  feedbacks: Feedback[] = [];
   idProdotto!: number;
 
   constructor(

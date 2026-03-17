@@ -12,6 +12,7 @@ import { CarrelloComponent } from './modules/cart/pages/carrello/carrello.compon
 import { FeedbackFormComponent } from './modules/feedback/pages/feedback-form/feedback-form.component';
 import { ProdottoCompratoComponentGrid } from './modules/product/pages/prodotto-comprato-grid/prodotto-comprato-grid.component';
 import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of-product/feedback-of-product.component';
+
 const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "registration", component: RegistrationComponent},

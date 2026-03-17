@@ -18,7 +18,7 @@ export class FeedbackService {
   }
 
   public showAllFeedbackOnProduct(id: number): Observable<any>{
-    return this.http.get<Feedback []>(this.AUTH_API + `/findAllFeedbackByProdotto/${id}`);
+    return this.http.get<Feedback[]>(this.AUTH_API +`/findAllFeedbackByProdotto/${id}`);
   }
 
 
