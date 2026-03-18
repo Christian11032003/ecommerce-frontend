@@ -26,25 +26,33 @@ export class ProdottoVendutoGridComponent {
       });
     }
 
-    aggiungiCarrello(request: AggiungiCarrello): void {
-      this.oggettoCarrello.addToCart(request).subscribe({
-      next: (res) => {
-        console.log('Prodotto aggiunto al carrello:', res);
-        // Aggiorniamo la quantità nel frontend senza ricaricare la pagina
-        const prodotto = this.prodottiVendita.find(p => p.id === request.idProdotto);
-        if (prodotto) {
+  aggiungiCarrello(request: AggiungiCarrello): void {
+  this.oggettoCarrello.addToCart(request).subscribe({
+    next: (res) => {
+      console.log('Prodotto aggiunto al carrello:', res);
+
+      // Trova il prodotto nella lista locale
+      const prodotto = this.prodottiVendita.find(p => p.id === request.idProdotto);
+      if (prodotto) {
+        // Sottrai la quantità selezionata
         prodotto.quantita -= request.quantita;
-        
-        // Opzionale: se la quantità arriva a 0, potresti voler rimuovere il prodotto dalla lista
+
+        // Se finita la disponibilità, rimuovi il prodotto
         if (prodotto.quantita <= 0) {
           this.prodottiVendita = this.prodottiVendita.filter(p => p.id !== request.idProdotto);
         }
       }
-      },
-      error: (err) => { // La proprietà corretta è 'error', non 'err'
-        console.error("Errore durante l'aggiunta al carrello:", err);
-      }
-    }); // Mancava la chiusura della tonda del subscribe
-  }
 
+      // Aggiorna il numerino del carrello in base alla quantità selezionata
+      this.oggettoCarrello.incrementCountBy(request.quantita);
+    },
+    error: (err) => {
+      console.error("Errore durante l'aggiunta al carrello:", err);
+    }
+  });
 }
+
+   
+}
+
+

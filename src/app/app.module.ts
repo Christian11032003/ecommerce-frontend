@@ -22,6 +22,7 @@ import { FeedbackFormComponent } from './modules/feedback/pages/feedback-form/fe
 import { ProdottoCompratoComponent } from './modules/product/components/prodotto-comprato/prodotto-comprato.component';
 import { ProdottoCompratoComponentGrid } from './modules/product/pages/prodotto-comprato-grid/prodotto-comprato-grid.component';
 import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of-product/feedback-of-product.component';
+import { FeedbackModifyComponent } from './modules/feedback/pages/feedback-modify/feedback-modify.component';
 
 
 
@@ -43,7 +44,8 @@ import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of
     FeedbackFormComponent,
     ProdottoCompratoComponent,
     ProdottoCompratoComponentGrid,
-    FeedbackOfProductComponent
+    FeedbackOfProductComponent,
+    FeedbackModifyComponent
     
   ],
   imports: [

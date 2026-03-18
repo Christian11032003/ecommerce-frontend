@@ -21,17 +21,20 @@ export class NavbarComponent implements OnInit{
   
 
   ngOnInit(): void {
-  // Ci iscriviamo ai cambiamenti dell'utente
+  // 1️⃣ Subscribe ai cambiamenti dell'utente
   this.authService.user$.subscribe(user => {
     if (user) {
       this.usernameLogged = user.username;
       this.isLoading = false;
-      this.caricaConteggioIniziale();
-    } else {
+      // Ora ci iscriviamo al BehaviorSubject del carrello
+      this.oggettoCarrelloService.carrelloCount$.subscribe(count => {
+        this.carrelloCount = count;
+      });
+      } else {
       this.usernameLogged = '';
       this.carrelloCount = 0;
-    }
-  });
+      }
+    });
   }
 
   // Controlla se nascondere la navbar

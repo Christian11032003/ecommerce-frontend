@@ -14,6 +14,11 @@ export class ProdottoCompratoComponent {
     
     // Riceve il dato dal padre
     @Input() prodottoVendita!: ProdottoVendita;
+
+    
+
+
+    
   
 
 }

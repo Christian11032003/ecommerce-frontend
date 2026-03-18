@@ -23,8 +23,24 @@ export class FeedbackFormComponent {
 
   aggiungiFeedback(){
     this.feedbackService.insertFeedback(this.request).subscribe({
-      next :(data) =>{ console.log(data)
+      next :(data) =>{
         alert("feedback inserito");
+      },
+      error: (err) =>{
+        if (err.status === 400) {
+        // MESSAGGIO RAPIDO COME DICEVI TU
+        alert("Attenzione: hai già recensito questo prodotto. Puoi solo modificarlo.");
+        this.router.navigate(['/prodotti-acquistati']);
+        // Magari qui lo mandi alla pagina di modifica
+        }
+      }
+    })
+  }
+
+  modificaFeedback(){
+    this.feedbackService.insertFeedback(this.request).subscribe({
+      next :(data) =>{ console.log(data)
+        alert("feedback modificato");
       },
       error: (errori) =>{
         console.log(errori)

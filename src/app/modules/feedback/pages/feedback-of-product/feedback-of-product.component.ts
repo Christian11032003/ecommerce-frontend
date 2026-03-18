@@ -20,7 +20,7 @@ export class FeedbackOfProductComponent implements OnInit {
 
   ngOnInit(): void {
     // Recuperiamo l'ID del prodotto dall'URL
-    this.idProdotto = +this.route.snapshot.params['id'];
+    this.idProdotto = this.route.snapshot.params['id'];
     this.caricaFeedback();
   }
 

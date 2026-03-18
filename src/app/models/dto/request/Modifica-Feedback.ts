@@ -1,5 +1,5 @@
 export interface ModificaFeedback{
-    id: number;
+    idFeedback: number;
     descrizione: string;
     valutazione: number;
 }

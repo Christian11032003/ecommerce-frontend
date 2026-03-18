@@ -21,6 +21,18 @@ export class OggettoCarrelloService {
     this.carrelloCount.next(count);
   }
 
+  getValue(): number {
+    return this.carrelloCount.getValue();
+  }
+
+  incrementCountBy(qta: number): void {
+  this.carrelloCount.next(this.carrelloCount.getValue() + qta);
+  }
+
+  decrementCount(): void {
+    this.carrelloCount.next(this.getValue() - 1);
+  }
+
   public addToCart(request: AggiungiCarrello): Observable<any> {
       return this.http.post(this.AUTH_API + `/addToCart`, request);
   }
