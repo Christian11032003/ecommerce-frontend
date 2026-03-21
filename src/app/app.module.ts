@@ -23,6 +23,9 @@ import { ProdottoCompratoComponent } from './modules/product/components/prodotto
 import { ProdottoCompratoComponentGrid } from './modules/product/pages/prodotto-comprato-grid/prodotto-comprato-grid.component';
 import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of-product/feedback-of-product.component';
 import { FeedbackModifyComponent } from './modules/feedback/pages/feedback-modify/feedback-modify.component';
+import { ConversazioneFormComponent } from './modules/messaggio/pages/conversazione-form/conversazione-form.component';
+import { ConversazioniPersonaliComponent } from './modules/messaggio/pages/conversazioni-personali/conversazioni-personali.component';
+import { MessaggiPersonaliComponent } from './modules/messaggio/pages/messaggi-personali/messaggi-personali.component';
 
 
 
@@ -45,7 +48,10 @@ import { FeedbackModifyComponent } from './modules/feedback/pages/feedback-modif
     ProdottoCompratoComponent,
     ProdottoCompratoComponentGrid,
     FeedbackOfProductComponent,
-    FeedbackModifyComponent
+    FeedbackModifyComponent,
+    ConversazioneFormComponent,
+    ConversazioniPersonaliComponent,
+    MessaggiPersonaliComponent
     
   ],
   imports: [

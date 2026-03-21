@@ -12,6 +12,9 @@ import { CarrelloComponent } from './modules/cart/pages/carrello/carrello.compon
 import { FeedbackFormComponent } from './modules/feedback/pages/feedback-form/feedback-form.component';
 import { ProdottoCompratoComponentGrid } from './modules/product/pages/prodotto-comprato-grid/prodotto-comprato-grid.component';
 import { FeedbackOfProductComponent } from './modules/feedback/pages/feedback-of-product/feedback-of-product.component';
+import { ConversazioniPersonaliComponent } from './modules/messaggio/pages/conversazioni-personali/conversazioni-personali.component';
+import { ConversazioneFormComponent } from './modules/messaggio/pages/conversazione-form/conversazione-form.component';
+import { MessaggiPersonaliComponent } from './modules/messaggio/pages/messaggi-personali/messaggi-personali.component';
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
@@ -25,6 +28,9 @@ const routes: Routes = [
   {path: "add-feedback/:id", component: FeedbackFormComponent, canActivate: [authGuard]},
   {path: "modify-product/:id", component: ProdottoModificaFormComponent, canActivate: [authGuard]},
   {path: "feedback-of-product/:id", component: FeedbackOfProductComponent, canActivate: [authGuard]},
+  {path: "le-mie-conversazioni", component: ConversazioniPersonaliComponent, canActivate: [authGuard]},
+  {path: "add-conversazione", component: ConversazioneFormComponent, canActivate: [authGuard]},
+  {path: "i-miei-messaggi/:id", component: MessaggiPersonaliComponent, canActivate: [authGuard]},
   {path: "", redirectTo: "welcome", pathMatch: "full" },
   {path: "**", redirectTo: "welcome" }
 ];

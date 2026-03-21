@@ -1,0 +1,68 @@
+<div class="d-flex flex-column min-vh-100 bg-light">
+  
+  <div class="bg-white shadow-sm p-3 sticky-top">
+    <div class="container d-flex align-items-center" style="max-width: 800px;">
+      <button (click)="torna()" class="btn btn-outline-secondary btn-sm rounded-pill me-3">
+        <i class="bi bi-arrow-left me-1"></i> Indietro
+      </button>
+      <h5 class="fw-bold text-dark m-0">Chat</h5>
+    </div>
+  </div>
+
+  <div class="flex-grow-1 container py-4 overflow-auto" style="max-width: 800px;">
+    
+    <div *ngFor="let msg of messaggi" class="d-flex justify-content-start mb-3">
+      
+      <div class="p-3 shadow-sm border" 
+           [style.max-width]="'85%'"
+           [ngClass]="msg.usernameMittente === utenteLoggato ? 
+                      'bg-primary text-white border-primary rounded-4 rounded-top-left-0' : 
+                      'bg-white text-dark border-light-subtle rounded-4 rounded-top-left-0'">
+        
+        <div *ngIf="messaggioInModifica?.id === msg.id; else visualizza" class="d-flex gap-2">
+          <input [(ngModel)]="testoModifica" class="form-control form-control-sm border-0 shadow-none" (keyup.enter)="confermaModifica()">
+          <button (click)="confermaModifica()" class="btn btn-sm btn-light text-success"><i class="bi bi-check-lg"></i></button>
+          <button (click)="annullaModifica()" class="btn btn-sm btn-light text-danger"><i class="bi bi-x-lg"></i></button>
+        </div>
+
+        <ng-template #visualizza>
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <small class="fw-bold opacity-75 me-3" style="font-size: 0.75rem;">
+              <i class="bi bi-person-fill me-1"></i>
+              {{ msg.usernameMittente === utenteLoggato ? 'Tu' : msg.usernameMittente }}
+            </small>
+            
+            <button *ngIf="msg.usernameMittente === utenteLoggato" 
+                    (click)="iniziaModifica(msg)" 
+                    class="btn btn-link btn-sm p-0 text-white opacity-75 shadow-none">
+              <i class="bi bi-pencil-square" style="font-size: 0.8rem;"></i>
+            </button>
+          </div>
+
+          <p class="mb-1 text-break">{{ msg.testo }}</p>
+          
+          <div class="text-end" style="font-size: 0.65rem; opacity: 0.7;">
+            {{ msg.inviatoIl | date: 'HH:mm' }}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="messaggi.length === 0" class="text-center py-5 opacity-25">
+      <i class="bi bi-chat-dots fs-1"></i>
+      <p class="mt-2">Inizia la conversazione...</p>
+    </div>
+  </div>
+
+  <div class="bg-white border-top p-3 sticky-bottom">
+    <div class="container" style="max-width: 800px;">
+      <div class="input-group border rounded-pill overflow-hidden bg-light shadow-sm">
+        <input type="text" [(ngModel)]="nuovoTesto" (keyup.enter)="inviaMessaggio()"
+               class="form-control border-0 bg-transparent py-2 px-4 shadow-none" placeholder="Scrivi un messaggio...">
+        <button class="btn btn-primary px-4 border-0" (click)="inviaMessaggio()" [disabled]="!nuovoTesto.trim()">
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

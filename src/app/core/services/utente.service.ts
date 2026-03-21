@@ -15,4 +15,8 @@ export class UtenteService {
   public registration(utente: Utente): Observable<any> {
     return this.http.post(this.AUTH_API + '/registrazione', utente, { responseType: 'text' });
   }
+
+  public getUtentiDisponibili(): Observable<any>{
+    return this.http.get(this.AUTH_API + '/findUtentiDisponibili');
+  }
 }
